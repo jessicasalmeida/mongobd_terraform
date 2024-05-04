@@ -4,11 +4,11 @@ resource "mongodbatlas_project" "atlas-project" {
   name = var.atlas_project_name
 }
 
-## Create Database IP Access List
-#resource "mongodbatlas_project_ip_access_list" "ip" {
-#  project_id = mongodbatlas_project.atlas-project.id
-#  ip_address = var.ip_address
-#}
+# Create Database IP Access List
+resource "mongodbatlas_project_ip_access_list" "ip" {
+  project_id = mongodbatlas_project.atlas-project.id
+  ip_address = var.ip_address
+}
 
 # Create an Atlas Advanced Cluster
 resource "mongodbatlas_advanced_cluster" "atlas-cluster" {
@@ -35,5 +35,4 @@ resource "mongodbatlas_advanced_cluster" "atlas-cluster" {
 
 ## Outputs to Display
 output "atlas_cluster_connection_string" { value = mongodbatlas_advanced_cluster.atlas-cluster.connection_strings.0.standard_srv }
-#output "ip_access_list"    { value = mongodbatlas_project_ip_access_list.ip.ip_address }
 output "project_name"      { value = mongodbatlas_project.atlas-project.name }
