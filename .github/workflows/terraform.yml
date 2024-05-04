@@ -25,5 +25,5 @@ jobs:
       run: terraform plan -no-color
 
     - name: Apply Terraform changes
-      run: terraform apply -auto-approve tfplan
+      run: terraform apply -auto-approve
       if: github.event_name == 'push'  # Aplicar apenas em push, não em pull requests
