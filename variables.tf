@@ -41,7 +41,7 @@ variable "mongodb_version" {
 
 # IP Address Access
 variable "ip_address" {
-  default = "172.29.32.1"
+  default = "0.0.0.0"
   description = "IP address used to access Atlas cluster"
 }
 # AWS Region

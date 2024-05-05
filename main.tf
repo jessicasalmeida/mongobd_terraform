@@ -10,6 +10,18 @@ resource "mongodbatlas_project_ip_access_list" "ip" {
   ip_address = var.ip_address
 }
 
+resource "mongodbatlas_database_user" "my_user" {
+  username        = "admin"
+  password        = "fiap_fase3"
+  project_id      = mongodbatlas_project.atlas-project.id
+  auth_database_name = "admin"
+
+  roles {
+    role_name     = "readWrite"
+    database_name = "restaurante_db"
+  }
+}
+
 # Create an Atlas Advanced Cluster
 resource "mongodbatlas_advanced_cluster" "atlas-cluster" {
   project_id = mongodbatlas_project.atlas-project.id
